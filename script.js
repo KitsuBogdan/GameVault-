@@ -50,6 +50,6 @@ function updateTotal() {
     if (currency.innerHTML === '$') {
         total.innerHTML = (amount * currentRate).toFixed(2) + ' ' + currency.innerHTML;
     } else {
-        total.innerHTML = (amount * currentRate).toFixed(1) + ' ' + currency.innerHTML;
+        total.innerHTML = (amount * currentRate).toFixed(2) + ' ' + currency.innerHTML;
     }
 }
