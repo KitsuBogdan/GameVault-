@@ -11,6 +11,7 @@ const rateValue = document.querySelector('.rate-value');
 const currencySymbol = document.querySelector('.currency-symbol');
 
 let currentRate = 1.2;
+let dlr = true;
 
 lang.addEventListener('click', () => {
     if (lang.innerHTML === '<img src="photos/usa.png" alt="usa">') {
@@ -37,7 +38,7 @@ currency.addEventListener('click', () => {
         currency.innerHTML = '$';
         rateLabel.textContent = '0.025 Steam доллар =';
         currencySymbol.textContent = 'доллара';
-        rateValue.innerHTML = currentRate;
+        rateValue.innerHTML = '0.3';
     }
     updateTotal();
 });
@@ -47,8 +48,8 @@ buyScInput.addEventListener('input', updateTotal);
 function updateTotal() {
     const amount = parseFloat(buyScInput.value) || 0;
     if (currency.innerHTML === '$') {
-        total.innerHTML = (amount * currentRate).toFixed(2) + ' ' + currency.innerHTML; // Для долара
+        total.innerHTML = (amount * currentRate).toFixed(2) + ' ' + currency.innerHTML;
     } else {
-        total.innerHTML = (amount * currentRate).toFixed(1) + ' ' + currency.innerHTML; // Для гривні
+        total.innerHTML = (amount * currentRate).toFixed(1) + ' ' + currency.innerHTML;
     }
 }
