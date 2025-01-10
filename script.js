@@ -11,45 +11,33 @@ const rateValue = document.querySelector('.rate-value');
 const currencySymbol = document.querySelector('.currency-symbol');
 
 let currentRate = 1.2;
-let dlr = true;
 
-lang.addEventListener('click', () => {
-    if (lang.innerHTML === '<img src="photos/usa.png" alt="usa">') {
-        lang.innerHTML = '<img src="photos/ua.png" alt="ua">';
-        catalog.innerHTML = 'Каталог';
-        purchases.innerHTML = 'Мої Покупки';
-        steamcurr.style.display = 'block';
-    } else {
-        lang.innerHTML = '<img src="photos/usa.png" alt="usa">';
-        catalog.innerHTML = 'Catalog';
-        purchases.innerHTML = 'My purchases';
-        steamcurr.style.display = 'none';
-    }
-});
-
-currency.addEventListener('click', () => {
-    if (currency.innerHTML === '$') {
-        currency.innerHTML = '₴';
-        rateLabel.textContent = '1 Steam гривня =';
-        currencySymbol.textContent = 'гривні';
-        currentRate = 1.2;
-        rateValue.innerHTML = currentRate;
-    } else {
-        currency.innerHTML = '$';
-        rateLabel.textContent = '0.025 Steam доллар =';
-        currencySymbol.textContent = 'доллара';
-        rateValue.innerHTML = '0.3';
-    }
-    updateTotal();
-});
-
+lang.addEventListener('click', toggleLanguage);
+currency.addEventListener('click', toggleCurrency);
 buyScInput.addEventListener('input', updateTotal);
+
+function toggleLanguage() {
+    const isEnglish = lang.innerHTML.includes('usa.png');
+    lang.innerHTML = isEnglish 
+        ? '<img src="photos/ua.png" alt="ua">' 
+        : '<img src="photos/usa.png" alt="usa">';
+    
+    catalog.textContent = isEnglish ? 'Каталог' : 'Catalog';
+    purchases.textContent = isEnglish ? 'Мої Покупки' : 'My purchases';
+    steamcurr.style.display = isEnglish ? 'block' : 'none';
+}
+
+function toggleCurrency() {
+    const isDollar = currency.innerHTML === '$';
+    currency.innerHTML = isDollar ? '₴' : '$';
+    rateLabel.textContent = isDollar ? '1 Steam гривня =' : '0.025 Steam доллар =';
+    currencySymbol.textContent = isDollar ? 'гривні' : 'доллара';
+    currentRate = isDollar ? 1.2 : 0.3;
+    rateValue.innerHTML = currentRate;
+    updateTotal();
+}
 
 function updateTotal() {
     const amount = parseFloat(buyScInput.value) || 0;
-    if (currency.innerHTML === '$') {
-        total.innerHTML = (amount * currentRate).toFixed(2) + ' ' + currency.innerHTML;
-    } else {
-        total.innerHTML = (amount * currentRate).toFixed(2) + ' ' + currency.innerHTML;
-    }
+    total.textContent = (amount * currentRate).toFixed(2) + ' ' + currency.innerHTML;
 }
