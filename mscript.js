@@ -76,11 +76,12 @@ const translations = {
 };
 
 theme.addEventListener('click', function() {
+    let icon = document.getElementById('icon');
     document.body.classList.toggle('dark-theme');
     if (document.body.classList.contains('dark-theme')) {
-        theme.src = 'photos/sun.png';
+        icon.src = 'photos/sun.png';
     } else {
-        theme.src = 'photos/moon.png';
+        icon.src = 'photos/moon.png';
     }
 });
 
