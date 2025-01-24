@@ -16,13 +16,16 @@ const buyScInput = document.querySelector('.buy_sc');
 const total = document.querySelector('.total');
 const rateLabel = document.querySelector('.rate-label');
 const rateValue = document.querySelector('.rate-value');
-const currencySymbol = document.querySelector('.currency-symbol');
+const currencySymbol = document.querySelector('.currency -symbol');
+
+const footer = document.querySelector('footer');
 
 let currentRate = 1.2;
 let currency = '₴'
 
 const translations = {
     en: {
+        footer: '© 2025 GameVault+. All rights reserved.',
         catalog: 'Catalog',
         purchases: 'My purchases',
         rateLabel: '0.025 Steam dollar =',
@@ -44,6 +47,7 @@ const translations = {
         ]
     },
     ua: {
+        footer: '© 2025 GameVault+. Всі права захищені.',
         catalog: 'Каталог',
         purchases: 'Мої Покупки',
         rateLabel: '1 Steam гривня =',
@@ -76,6 +80,7 @@ function toggleLanguage() {
         ? '<img src="photos/ua.png" alt="ua">' 
         : '<img src="photos/usa.png" alt="usa">';
     
+    footer.textContent = translations[newLang].footer;
     catalog.textContent = translations[newLang].catalog;
     purchases.textContent = translations[newLang].purchases;
     steamcurr.style.display = translations[newLang].steamcurr;
@@ -86,7 +91,7 @@ function toggleLanguage() {
     steamcurrTitle.textContent = translations[newLang].steamcurrTitle;
     steamcurrRate.innerHTML = translations[newLang].steamcurrRate;
     currency = isEnglish ? '₴' : '$';
-    currentRate = isEnglish ? 1.2 : 0.3;
+    currentRate = isEnglish ? 1.2 : 1.2;
     updateRecItems(newLang);
     updateCurrencyText();
     updateTotal();
