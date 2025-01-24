@@ -20,11 +20,14 @@ const currencySymbol = document.querySelector('.currency -symbol');
 
 const footer = document.querySelector('footer');
 
+const buy_sc = document.querySelector('.buy_sc');
+
 let currentRate = 1.2;
 let currency = '₴'
 
 const translations = {
     en: {
+        buy_sc: 'Amount in Steam currency',
         footer: '© 2025 GameVault+. All rights reserved.',
         catalog: 'Catalog',
         purchases: 'My purchases',
@@ -47,6 +50,7 @@ const translations = {
         ]
     },
     ua: {
+        buy_sc: 'Сума в Steam валюті',
         footer: '© 2025 GameVault+. Всі права захищені.',
         catalog: 'Каталог',
         purchases: 'Мої Покупки',
@@ -80,6 +84,7 @@ function toggleLanguage() {
         ? '<img src="photos/ua.png" alt="ua">' 
         : '<img src="photos/usa.png" alt="usa">';
     
+    buy_sc.placeholder = translations[newLang].buy_sc;
     footer.textContent = translations[newLang].footer;
     catalog.textContent = translations[newLang].catalog;
     purchases.textContent = translations[newLang].purchases;
