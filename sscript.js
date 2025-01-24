@@ -75,13 +75,40 @@ const translations = {
     }
 };
 
-theme.addEventListener('click', function() {
-    document.body.classList.toggle('dark-theme');
-    if (document.body.classList.contains('dark-theme')) {
-        theme.src = 'photos/sun.png';
-    } else {
-        theme.src = 'photos/moon.png';
+function changeRootVariables(newVariables) {
+    for (const [key, value] of Object.entries(newVariables)) {
+        document.documentElement.style.setProperty(key, value);
     }
+}
+
+const oldVariables = {
+    '--primary-color': '#4A4A4A',
+    '--secondary-color': '#2A3D66',
+    '--tertiary-color': '#1E2A45',
+    '--quaternary-color': '#B0B0B0',
+    '--highlight-color': '#D9D9D9',
+    '--success-color': '#34C200',
+    '--success-hover-color': '#2A9E00',
+    '--text-color': '#FFFFFF',
+    '--shadow-color': 'rgba(74, 74, 74, 0.5)'
+};
+
+const newVariables = {
+    '--primary-color': '#71b300',
+    '--secondary-color': '#73ca73',
+    '--tertiary-color': '#d4d487',
+    '--quaternary-color': '#C0C0C0',
+    '--highlight-color': '#87ce66',
+    '--success-color': '#32CD32',
+    '--success-hover-color': '#228B22',
+    '--text-color': '#333333',
+    '--shadow-color': 'rgba(0, 0, 0, 0.1)'
+};
+
+theme.addEventListener('click', () => {
+    const isOldTheme = theme.innerHTML.includes('moon');
+    theme.innerHTML = isOldTheme ? '<img src="photos/sun.png" alt="sun">' : '<img src="photos/moon.png" alt="moon">';
+    changeRootVariables(isOldTheme ? newVariables : oldVariables);
 });
 
 lang.addEventListener('click', toggleLanguage);
@@ -132,3 +159,4 @@ function updateRecItems(langKey) {
         item.querySelector('.buy_btn').textContent = translations[langKey].recItems[index].buyBtn;
     });
 }
+і
