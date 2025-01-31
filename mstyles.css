@@ -289,6 +289,7 @@ main {
 }
 
 .rec-item {
+    box-shadow: inset 0px 0px 10px 1px var(--shadow-color);
     background-color: var(--highlight-color);
     border-radius: 10px;
     width: 30%;
@@ -315,6 +316,7 @@ main {
 }
 
 .buy_item {
+    
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -360,12 +362,13 @@ main {
 }
 
 .steamcurr {
+    
     background: linear-gradient(135deg, var(--secondary-color), var(--tertiary-color));
     color: var(--text-color);
     width: 90%;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px 1px rgba(42, 61, 102, 0.5);
+    box-shadow: inset 0px 0px 10px 1px var(--shadow-color);
     display: flex;
     flex-direction: column;
     align-items: center;

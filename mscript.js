@@ -1,30 +1,38 @@
+// header
 const lang = document.querySelector('.language');
 const catalog = document.querySelector('.catalog');
 const purchases = document.querySelector('.purchases');
-const steamcurr = document.querySelector('.steamcurr');
 const searchInput = document.querySelector('.search');
+const theme = document.querySelector('.theme');
+
+// steamcurr
+const steamcurr = document.querySelector('.steamcurr');
 const steamIdInput = document.querySelector('.steam_id');
 const buyScBtn = document.querySelector('.buyscbtn');
 const totalLabel = document.querySelector('.total');
 const steamcurrTitle = document.querySelector('.steamcurr h1');
 const steamcurrRate = document.querySelector('.steamcurr h2');
-const recItems = document.querySelectorAll('.rec-item');
-const recItemPrices = document.querySelectorAll('.rec-item h3');
-const recItemBuyBtns = document.querySelectorAll('.rec-item .buy_btn');
-const theme = document.querySelector('.theme');
-
 const buyScInput = document.querySelector('.buy_sc');
 const total = document.querySelector('.total');
 const rateLabel = document.querySelector('.rate-label');
 const rateValue = document.querySelector('.rate-value');
+
+// recItems
+const recItems = document.querySelectorAll('.rec-item');
+const recItemPrices = document.querySelectorAll('.rec-item h3');
+const recItemBuyBtns = document.querySelectorAll('.rec-item .buy_btn');
+
+// footer
+const footer = document.querySelector('footer');
+
+// additional
 const currencySymbol = document.querySelector('.currency -symbol');
 const buy_sc = document.querySelector('.buy_sc');
 
-const footer = document.querySelector('footer');
 
 
 let currentRate = 1.2;
-let currency = '₴'
+let currency = '₴';
 
 const translations = {
     en: {
@@ -82,7 +90,7 @@ theme.addEventListener('click', function() {
         icon.src = 'photos/sun.png';
     } else {
         icon.src = 'photos/moon.png';
-    }
+    };
 });
 
 lang.addEventListener('click', toggleLanguage);
@@ -111,7 +119,7 @@ function toggleLanguage() {
     updateRecItems(newLang);
     updateCurrencyText();
     updateTotal();
-}
+};
 
 function updateCurrencyText() {
     const isDollar = currency === '$';
@@ -119,12 +127,12 @@ function updateCurrencyText() {
     rateLabel.textContent = isDollar ? translations.en.rateLabel : translations.ua.rateLabel;
     currencySymbol.textContent = isDollar ? translations.en.currencySymbol : translations.ua.currencySymbol;
     rateValue.innerHTML = currentRate;
-}
+};
 
 function updateTotal() {
     const amount = parseFloat(buyScInput.value) || 0;
     total.textContent = (amount * currentRate).toFixed(2) + ' ' + currency;
-}
+};
 
 function updateRecItems(langKey) {
     recItems.forEach((item, index) => {
@@ -132,4 +140,4 @@ function updateRecItems(langKey) {
         item.querySelector('h3').textContent = translations[langKey].recItems[index].price;
         item.querySelector('.buy_btn').textContent = translations[langKey].recItems[index].buyBtn;
     });
-}
+};

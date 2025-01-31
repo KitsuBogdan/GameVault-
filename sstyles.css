@@ -1,5 +1,7 @@
 * {
-    box-sizing: border-box;
+    box-sizing:border-box;
+    transition: all 0.3s ease;
+
 }
 
 a {
@@ -8,16 +10,29 @@ a {
 }
 
 :root {
-    --primary-color: #71b300;
-    --secondary-color: #8ad38a;
-    --tertiary-color: #F5F5DC;
-    --quaternary-color: #C0C0C0;
-    --highlight-color: #FFD700;
-    --success-color: #32CD32;
-    --success-hover-color: #228B22;
-    --text-color: #333333;
+    --primary-color: #20b2bd;
+    --secondary-color: #1ba89d;
+    --tertiary-color: #bcdfe2;
+    --quaternary-color: #c6dbd5;
+    --highlight-color: #b4e1e3;
+    --success-color: #00c251;
+    --success-hover-color: #09e263;
+    --text-color: #2d2d2d;
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
+
+.dark-theme {
+    --primary-color: #333333;
+    --secondary-color: #3b5a77;
+    --tertiary-color: #212931;
+    --quaternary-color: #a0a0a0;
+    --highlight-color: #646464;
+    --success-color: #2c7a32;
+    --success-hover-color: #206a24;
+    --text-color: #e0e0e0;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
 
 
 header {
@@ -27,7 +42,7 @@ header {
     left: 0;
     top: 0;
     background: var(--primary-color);
-    border: 1px solid #000;
+    border: 1px solid var(--text-color);
     box-shadow: 0px 4px 10px 1px var(--shadow-color);
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -47,10 +62,17 @@ header {
     box-shadow: var(--primary-color) 10px -8px 10px 15px;
 }
 
+header h1 {
+    margin-left: 10px;
+    cursor: default;
+    font-size: 24px;
+}
+
 .catalog,
 .purchases,
 .language,
-.sell {
+.sell,
+.theme {
     height: 40px;
     background: var(--secondary-color);
     border-radius: 10px;
@@ -59,12 +81,13 @@ header {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background 0.3s ease;
+    color: var(--text-color);
 }
 
 .catalog:hover,
 .purchases:hover,
-.language:hover {
+.language:hover,
+.theme:hover {
     background: var(--tertiary-color);
 }
 
@@ -85,6 +108,16 @@ header {
     height: auto;
 }
 
+.theme {
+    width: 5pc;
+    height: 40px;
+}
+
+.theme img {
+    width: 2.2pc;
+    height: auto;
+};
+
 .sell {
     width: 118px;
     font-size: 1pc;
@@ -98,6 +131,7 @@ header {
     .catalog {
         width: 100px;
     }
+
 
     .purchases {
         width: 150px;
@@ -178,14 +212,7 @@ header {
 
     .catalog,
     .purchases,
-    .language {
-        width: 100%;
-        margin: 5px 0;
-    }
-
-    .search {
-        width: calc(100% - 20px);
-    }
+    .language,
 
     header h1 {
         font-size: 16px;
@@ -201,42 +228,85 @@ body {
     background-color: lightgray;
     margin: 0;
     padding: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 main {
-    width: 100%;
-    height: 45pc;
+    min-height: 46pc;
+    width: 95%;
+
     background: var(--quaternary-color);
     box-shadow: 0px 4px 10px 1px var(--shadow-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-around;
-    gap: 20px;
+
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     font-size: 10px;
     line-height: 24px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    
+    padding: 20px;
     margin-top: 120px;
-    margin-bottom: 30px;
 }
 
-.login {
-    background: var(--quaternary-color);
-    box-shadow: 0px 4px 10px 1px var(--shadow-color);
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 24px;
+input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 10px 1px var(--shadow-color);
+    font-size: 16px;
+    background: linear-gradient(135deg, var(--tertiary-color), var(--quaternary-color));
+    margin-top: 10px;
+}
+
+::placeholder {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.login h1{
+    text-shadow: 0px 0px 10px var(--shadow-color);
+}
+
+
+.login{
+    height: 40pc;
+    width: 80%;
+
+    width: 80%;
+    height: 40pc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 10px 1px var(--shadow-color);
+    font-size: 16px;
+    background: linear-gradient(135deg, var(--tertiary-color), var(--quaternary-color));
+    margin-top: 10px;
+
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 1200px;
-    justify-content: space-around;
-    gap: 20px;
-    padding: 20px;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.btn {
+    background: linear-gradient(135deg, var(--secondary-color), var(--tertiary-color));
+    color: var(--text-color);
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    border: 1px solid var(--text-color);
+    margin: 0 auto;
+    margin-top: 10px;
+    box-shadow: inset 0px 0px 10px 1px var(--shadow-color);
 }
 
 footer {
