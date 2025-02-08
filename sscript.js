@@ -1,4 +1,4 @@
-
+const header = document.querySelector('header');
 const lang = document.querySelector('.language');
 const catalog = document.querySelector('.catalog');
 const purchases = document.querySelector('.purchases');
@@ -7,22 +7,30 @@ const theme = document.querySelector('.theme');
 
 const login = document.querySelector('.login');
 const login_input = document.querySelector('.login_input');
+const password_input = document.querySelector('.password_input');
+const login_btn = document.querySelector('.login_btn');
+const register = document.querySelector('.register');
 
 const footer = document.querySelector('footer');
 
-
-
-let currentRate = 1.2;
-let currency = '₴';
-
 const translations = {
     en: {
-        footer: '© 2025 GameVault+. All rights reserved.',
+        name: 'GameVault+ <br> Login',
         catalog: 'Catalog',
+        login: 'Login',
+        login_input: 'Enter your login',
+        password_input: 'Enter your password',
+        register: 'Don\'t have an account?<br>Register',
+        footer: '© 2025 GameVault+. All rights reserved.',
     },
     ua: {
-        footer: '© 2025 GameVault+. Всі права захищені.',
+        name: 'GameVault+ <br> Вхід',
         catalog: 'Каталог',
+        login: 'Увійти',
+        login_input: 'Введіть ваш логін',
+        password_input: 'Введіть ваш пароль',
+        register: 'Немає аккаунту?<br>Зареєструватися',
+        footer: '© 2025 GameVault+. Всі права захищені.',
     }
 };
 
@@ -34,8 +42,14 @@ function toggleLanguage() {
     lang.innerHTML = isEnglish 
         ? '<img src="photos/ua.png" alt="ua">' 
         : '<img src="photos/usa.png" alt="usa">';
-    footer.textContent = translations[newLang].footer;
+    header.querySelector('h1').innerHTML = translations[newLang].name;
     catalog.textContent = translations[newLang].catalog;
+    login.querySelector("h1").textContent = translations[newLang].login;
+    login_input.placeholder = translations[newLang].login_input;
+    password_input.placeholder = translations[newLang].password_input;
+    login_btn.textContent = translations[newLang].login;
+    register.innerHTML = translations[newLang].register;
+    footer.textContent = translations[newLang].footer;
 };
 
 theme.addEventListener('click', function() {
