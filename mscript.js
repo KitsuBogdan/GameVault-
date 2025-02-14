@@ -32,6 +32,7 @@ const buyBtn = document.querySelector('.buy_btn');
 // additional
 const currencySymbol = document.querySelector('.currency -symbol');
 const buy_sc = document.querySelector('.buy_sc');
+const reviews = document.querySelector('.reviews');
 
 let translations = {
     en: {
@@ -86,6 +87,7 @@ recItems.forEach((item, index) => {
         redirected = true;
         items.style.display = 'none';
         steamcurr.style.display = 'none';
+        reviews.style.display = 'none';
 
         const mainDivCreate = document.createElement('div');
         mainDivCreate.className = 'main-item';
@@ -160,6 +162,7 @@ catalog.addEventListener('click', () => {
         redirected = false;
         items.style.display = 'flex';
         steamcurr.style.display = 'flex';
+        reviews.style.display = 'flex';
 
         const existingDiv = document.querySelector('.main-item');
 
