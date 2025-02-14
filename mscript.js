@@ -27,6 +27,8 @@ const recItemBuyBtns = document.querySelectorAll('.rec-item .buy_btn');
 const main = document.querySelector('main');
 const footer = document.querySelector('footer');
 
+const buyBtn = document.querySelector('.buy_btn');
+
 // additional
 const currencySymbol = document.querySelector('.currency -symbol');
 const buy_sc = document.querySelector('.buy_sc');
