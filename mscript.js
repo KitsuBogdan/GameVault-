@@ -114,19 +114,42 @@ recItems.forEach((item, index) => {
         itemImgCreate.style.marginTop = '20px';
         itemImgCreate.style.borderRadius = '10px';
 
-        const itemPrice = recItemPrices[index].textContent;
+        const itemDescCreate = document.createElement('p');
+        itemDescCreate.textContent = item.querySelector('.item-desc').textContent;
+        itemDescCreate.style.textAlign = 'center';
+        itemDescCreate.style.marginTop = '20px';
+        itemDescCreate.style.fontSize = '18px';
+        itemDescCreate.style.maxWidth = '600px';
+        itemDescCreate.classList = 'page-desc';
+
+        const itemPriceCreate = document.createElement('p');
+        itemPriceCreate.textContent = item.querySelector('.buy_item').querySelector('h3').textContent;
+        itemPriceCreate.style.textAlign = 'center';
+        itemPriceCreate.style.marginTop = '20px';
+        itemPriceCreate.style.fontSize = '18px';
+        itemPriceCreate.style.maxWidth = '600px';
+        itemPriceCreate.classList = 'page-price';
+
+        const itemButtonCreate = document.createElement('p');
+        itemButtonCreate.textContent = 'Купити';
+        itemButtonCreate.classList = 'buy_btn';
 
         document.querySelector('main').appendChild(mainDivCreate);
         document.querySelector('.main-item').appendChild(nameDivCreate);
         document.querySelector('.name-item').appendChild(itemNameCreate);
         document.querySelector('.name-item').appendChild(itemImgCreate);
+        document.querySelector('.main-item').appendChild(itemDescCreate);
+        document.querySelector('.main-item').appendChild(itemPriceCreate);
+        document.querySelector('.main-item').appendChild(itemButtonCreate);
 
         footer.style.position = 'fixed';
         footer.style.bottom = '0';
 
         main.style.height = '45pc';
+
     });
 });
+
 
 catalog.addEventListener('click', () => {
     if (redirected) {

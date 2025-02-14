@@ -301,6 +301,19 @@ main {
     cursor: pointer;
 }
 
+.item-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 15px;
+    align-items: center;
+}
+
+.page-desc {
+    font-size: 30px;
+    text-align: center;
+}
+
 .rec-item:hover {
     transform: scale(1.05);
 }
